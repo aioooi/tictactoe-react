@@ -1,0 +1,68 @@
+.square {
+  position: relative;
+  width: auto;
+  height: auto;
+  background-color: white;
+  border: 1px solid #c4c4c4;
+  border-radius: 4%;
+  cursor: pointer;
+  color: white;
+  box-shadow: 2px 2px 4px #bbb;
+}
+
+.square:hover {
+  background-color: var(--HOVER-COLOR);
+  box-shadow: 1px 1px 2px #aaa;
+}
+
+.tag {
+  /* border: 1px dashed magenta; */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 5vw;
+  line-height: 5vw;
+}
+
+.played {
+  background-color: var(--PLAYED-COLOR);
+  cursor: auto;
+  color: var(--MARKER-COLOR);
+  animation: click 300ms ease-out;
+  /* delay iteration-count direction fill-mode; */
+}
+
+@keyframes click {
+  from {
+    background-color: var(--HIGHLIGHT-COLOR);
+    color: #fff5f5;
+  }
+  to {
+    background-color: var(--PLAYED-COLOR);
+    color: var(--MARKER-COLOR);
+  }
+}
+
+.played:hover {
+  background-color: var(--PLAYED-COLOR);
+}
+
+.highlight-winning-line {
+  animation: winning-line 800ms ease-in-out 1;
+}
+
+@keyframes winning-line {
+  0% {
+    background-color: var(--PLAYED-COLOR);
+    color: var(--MARKER-COLOR);
+  }
+  50% {
+    background-color: var(--HIGHLIGHT-COLOR);
+    color: #fff5f5;
+  }
+  100% {
+    background-color: var(--PLAYED-COLOR);
+    color: var(--MARKER-COLOR);
+  }
+}
