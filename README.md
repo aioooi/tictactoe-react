@@ -20,8 +20,8 @@ Clone the Tic Tac Toe engine from <https://github.com/aioooi/tictactoe-js> using
 
 
 ```bash
-mkdir lib
-npx degit aioooi/tictactoe-js lib/tictactoe
+mkdir src/lib
+npx degit aioooi/tictactoe-js src/lib/tictactoe
 ```
 
 ## Build and Run
