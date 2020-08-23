@@ -24,6 +24,7 @@ class Square extends React.Component {
           (this.props.highlight === true ? "highlight-winning-line " : " ") +
           (this.props.owner !== ttt.EMPTY ? "played" : "")
         }
+        onClick={() => this.props.receiveClick(this.props.id)}
       >
         <div className="tag">{tag}</div>
       </div>

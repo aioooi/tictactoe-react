@@ -16,8 +16,8 @@
 }
 
 .tag {
-  /* border: 1px dashed magenta; */
   position: absolute;
+  cursor: default;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);

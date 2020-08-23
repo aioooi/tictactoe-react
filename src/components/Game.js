@@ -18,12 +18,19 @@ class Game extends React.Component {
       ],
     };
   }
+  
+  onClick(id) {
+    console.log(id)
+  }
+
   render() {
     let board = [...new Array(9)].map((v, i) => (
       <Square
-        id={i}
+        key={i}
+        id={i} // make key available as prop in Square
         owner={this.state.state[Math.floor(i / 3)][i % 3]}
         highlight={false}
+        receiveClick={this.onClick.bind(this)}
       />
     ));
     return (
