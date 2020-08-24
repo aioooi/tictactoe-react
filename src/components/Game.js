@@ -6,7 +6,7 @@ import * as ttt from "../lib/tictactoe/tictactoe.js";
 
 import LevelSelection from "./LevelSelection.js";
 import Square from "./Square.js";
-import Stats from "./Stats.js";
+import Scoreboard from "./Scoreboard.js";
 
 const LEVEL = [
   { label: "trivial", handicap: 90 },
@@ -161,7 +161,7 @@ class Game extends React.Component {
     return (
       <div>
         <div className="board">{board}</div>
-        <Stats></Stats>
+        <Scoreboard stats={this.state.stats} />
         <LevelSelection></LevelSelection>
       </div>
     );

@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Stats extends React.Component {
+class Scoreboard extends React.Component {
   render() {
     return (
       <p>Game Stats</p>
@@ -8,4 +8,4 @@ class Stats extends React.Component {
   }
 }
 
-export default Stats;
+export default Scoreboard;
