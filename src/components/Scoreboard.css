@@ -1,0 +1,12 @@
+.scoreboard-grid {
+  width: 38vw;
+  min-width: 338px;
+  max-width: 38vh;
+  margin: 4vh auto 2vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 300;
+  grid-gap: 3px;
+}
