@@ -8,7 +8,7 @@ function App() {
     <div className="App">
       <h1>Let's Play: Tic Tac Toe</h1>
       <h2>(implemented using React)</h2>
-      <Game></Game>
+      <Game playerBegins={true} delay={300}/>
     </div>
   );
 }
