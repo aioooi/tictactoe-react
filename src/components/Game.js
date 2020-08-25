@@ -144,6 +144,7 @@ class Game extends React.Component {
 
   async handleLevelSelection(newLevel) {
     this.level = newLevel;
+    this.playerBegins = true;
     this.resetStats();
     this.newGame();
   }
