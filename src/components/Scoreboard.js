@@ -12,12 +12,6 @@ class Scoreboard extends React.Component {
     };
   }
 
-  // componentDidUpdate(nextProps) {
-  //   if (this.props.stats !== nextProps.stats) {
-  //     this.setState({stats: nextProps.stats});
-  //   }
-  // }
-
   render() {
     return (
       <div className="scoreboard-grid">
