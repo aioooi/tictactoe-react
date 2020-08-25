@@ -114,7 +114,6 @@ class Game extends React.Component {
   }
 
   async userInput(id) {
-    console.log(id);
     const i = Math.floor(id / 3);
     const j = id % 3;
 
