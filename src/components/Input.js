@@ -30,7 +30,7 @@ class Input extends React.Component {
     if (this.state.disabled) {
       render = <div className="cell">{this.state.value}</div>;
     } else {
-      const pencil = this.state.focus ? <span></span> : <label>&#x270E;</label>;
+      const pencil = this.state.focus ? <span></span> : <label id="pencil">&#x270E;</label>;
       render = (
         <form onSubmit={this.handleInput}>
           <div className="input-form-div">
