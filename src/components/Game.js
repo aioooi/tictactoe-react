@@ -27,6 +27,8 @@ class Game extends React.Component {
     this.playerBegins = this.props.playerBegins;
     this.playerBeginsAfterDraw = !this.playerBegins;
 
+    this.squareRefs = [...Array(9)].map(() => React.createRef());
+
     this.state = {
       level: 2, // default level: 'medium'
       state: [
@@ -55,7 +57,7 @@ class Game extends React.Component {
 
     if (!this.playerBegins) {
       this.locked = true;
-      await this.sleep(50);
+      await this.sleep(100);
       this.game.makeMove();
       this.setState({ state: this.game.state }); // [...state]???!
     }
@@ -96,9 +98,12 @@ class Game extends React.Component {
       this.playerBeginsAfterDraw = !this.playerBeginsAfterDraw;
     }
 
-    // TODO highlight winning line
+    if (winner !== ttt.EMPTY) {
+      const line = this.game._winningLine;
+      line.map((v) => this.squareRefs[v].current.highlight());
+    }
 
-    await this.sleep(1200);
+    await this.sleep(800);
     this.newGame();
   }
 
@@ -143,10 +148,10 @@ class Game extends React.Component {
   render() {
     let board = [...new Array(9)].map((v, i) => (
       <Square
-        key={i}
+        ref={this.squareRefs[i]}
         id={i} // make key available as prop in Square
+        key={i}
         owner={this.state.state[Math.floor(i / 3)][i % 3]}
-        highlight={false}
         receiveClick={this.userInput.bind(this)}
       />
     ));

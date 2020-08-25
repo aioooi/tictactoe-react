@@ -8,9 +8,17 @@ class Square extends React.Component {
   constructor(props) {
     super(props);
     this.props = props;
+
+    this.state = { highlight: false };
   }
+
+  highlight() {
+    this.setState({ highlight: true });
+    setTimeout(() => this.setState({ highlight: false }), 800);
+  }
+
   render() {
-    let tag = '';
+    let tag = "";
     if (this.props.owner === ttt.PLAYER) {
       tag = <span>&#x0fbe;</span>;
     } else if (this.props.owner === ttt.COMPUTER) {
@@ -21,8 +29,8 @@ class Square extends React.Component {
       <div
         className={
           "square " +
-          (this.props.highlight === true ? "highlight-winning-line " : " ") +
-          (this.props.owner !== ttt.EMPTY ? "played" : "")
+          (this.state.highlight ? "highlight-winning-line " : " ") +
+          (this.props.owner !== ttt.EMPTY && !this.state.highlight ? "played" : "")
         }
         onClick={() => this.props.receiveClick(this.props.id)}
       >
