@@ -2,6 +2,8 @@ import React from "react";
 
 import "./ScoreboardCell.css";
 
+import Input from "./Input.js";
+
 class ScoreboardCell extends React.Component {
   constructor(props) {
     super(props);
@@ -20,10 +22,16 @@ class ScoreboardCell extends React.Component {
   }
 
   render() {
+    const label =
+      this.props.label === "Player" ? (
+        <Input text={"Player"} edit={true} />
+      ) : (
+        <div className="cell">{this.props.label}</div>
+      );
     return (
       <div className={this.state.classNames}>
-        <div>{this.props.label}</div>
-        <div>{this.props.value}</div>
+        {label}
+        <div className="cell">{this.props.value}</div>
       </div>
     );
   }
