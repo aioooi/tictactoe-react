@@ -73,34 +73,27 @@ class Game extends React.Component {
   }
 
   async processResults() {
-    if (this.game.winner === ttt.COMPUTER) {
+    const winner = this.game.winner;
+
+    this.setState((state) => {
+      let s = { ...state.stats };
+      if (winner === ttt.COMPUTER) {
+        s.computer += 1;
+      } else if (winner === ttt.PLAYER) {
+        s.player += 1;
+      } else {
+        s.draw += 1;
+      }
+      return { stats: s };
+    });
+
+    if (winner === ttt.COMPUTER) {
       this.playerBegins = true;
-      this.setState((state) => ({
-        stats: {
-          computer: state.stats.computer + 1,
-          draw: state.stats.draw,
-          player: state.stats.player,
-        },
-      }));
-    } else if (this.game.winner === ttt.PLAYER) {
+    } else if (winner === ttt.PLAYER) {
       this.playerBegins = false;
-      this.setState((state) => ({
-        stats: {
-          computer: state.stats.computer,
-          draw: state.stats.draw,
-          player: state.stats.player + 1,
-        },
-      }));
     } else {
       this.playerBegins = this.playerBeginsAfterDraw;
       this.playerBeginsAfterDraw = !this.playerBeginsAfterDraw;
-      this.setState((state) => ({
-        stats: {
-          computer: state.stats.computer,
-          draw: state.stats.draw + 1,
-          player: state.stats.player,
-        },
-      }));
     }
 
     // TODO highlight winning line
