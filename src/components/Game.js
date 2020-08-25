@@ -23,6 +23,7 @@ class Game extends React.Component {
 
     this.DELAY = props.delay < 0 || props.delay > 500 ? 300 : props.delay;
     this.game = null;
+    this.level = 2; // default level: 'medium'
     this.locked = false;
     this.playerBegins = this.props.playerBegins;
     this.playerBeginsAfterDraw = !this.playerBegins;
@@ -30,7 +31,6 @@ class Game extends React.Component {
     this.squareRefs = [...Array(9)].map(() => React.createRef());
 
     this.state = {
-      level: 2, // default level: 'medium'
       state: [
         [ttt.EMPTY, ttt.EMPTY, ttt.EMPTY],
         [ttt.EMPTY, ttt.EMPTY, ttt.EMPTY],
@@ -49,15 +49,12 @@ class Game extends React.Component {
   }
 
   async newGame() {
-    this.game = new ttt.Game(
-      LEVEL[this.state.level].handicap,
-      this.playerBegins
-    );
+    this.game = new ttt.Game(LEVEL[this.level].handicap, this.playerBegins);
     this.setState({ state: this.game.state }); // [...state]???!
 
     if (!this.playerBegins) {
       this.locked = true;
-      await this.sleep(100);
+      await this.sleep(200);
       this.game.makeMove();
       this.setState({ state: this.game.state }); // [...state]???!
     }
@@ -145,6 +142,12 @@ class Game extends React.Component {
     }
   }
 
+  async handleLevelSelection(newLevel) {
+    this.level = newLevel;
+    this.resetStats();
+    this.newGame();
+  }
+
   render() {
     let board = [...new Array(9)].map((v, i) => (
       <Square
@@ -159,7 +162,11 @@ class Game extends React.Component {
       <div>
         <div className="board">{board}</div>
         <Scoreboard stats={this.state.stats} />
-        <LevelSelection></LevelSelection>
+        <LevelSelection
+          callback={this.handleLevelSelection.bind(this)}
+          currentLevel={this.level}
+          levels={LEVEL.map((v) => v.label)}
+        />
       </div>
     );
   }
