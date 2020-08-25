@@ -15,7 +15,8 @@ class Input extends React.Component {
     this.handleInput = this.handleInput.bind(this);
   }
 
-  handleFocus() {
+  handleFocus(e) {
+    e.target.select();
     this.setState({ focus: true });
   }
 
